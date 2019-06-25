@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="banking.users.domain.entity">
+	<class name="UserClaim" table="user_claim">
+        <id name="id" column="user_claim_id">
+            <generator class="native"/>
+        </id>
+        <property name="type" column="claim_type" />
+        <property name="value" column="claim_value" />
+        <many-to-one name="user" class="banking.users.domain.entity.User" column="user_id" not-null="true"/>
+    </class> 
+</hibernate-mapping>

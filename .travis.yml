@@ -1,0 +1,17 @@
+language: java
+sudo: true
+jdk: oraclejdk8
+script: env && ./mvnw package -B
+before_install:
+- chmod +x mvnw
+install:
+- mvn -N io.takari:maven:wrapper
+- "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+deploy:
+  provider: cloudfoundry
+  username: efrainbautista@hotmail.com
+  password:
+    secure: KroyiIIN0wZiWaNQRUaLqdY6OJOQOGHG6Ub8RXRGdZLwb348xDjctTvJpl4z6IjFxIYL86myJ5r9he8Il9zlYyiTQQm6pZNJktZBkPbl87lMqP0VXcJZ6QWgdes8bRh0bgXwir8AHSREOfEPwk+w7BCnfWBmeEuZRwuJhVhvrdGyCj8IKIn+FAngigH0PwVp3FP0m/UvQx4ZJYCz76EcCFVjPZjHjKIFA0zpIpxj+c4yDSYDmAlYYKaHkenyIEtZZP+0cmus/CxuqsG5QPYEcSs/xyM2WMVa9BwzXyQu2fDbXvxgIRVpRfNOBw/vtKQskJcTzmbhyLz20hKANBrNvf6bPxtQx126AJ+nUH1WBX3ob8G42jHqfgAedMmFI08602zrBvQHbyvaUazMnykoJK+gmhVHeCcZQhRqnj2i7iVGnFr7dJjrpbfjcZYSp+mJyvECiSnN/80r6iF6rZV67LGgpTK8n7jhNmDMBh5C03puW6q3n5TcBqQVNDQ1XHssBZSqqZ/Cex64r8ahTyttr5WjHuGF+aBi7w8J4SoF+yX/1vBoIuhU03DQCvZ+VRGobMOzVMK6cJCmTyx04QDG5/5KPtV3RJ/r7MMoHrCRHfUXkT6/Sks1Q+rnW6he+ZSNeGoMsnRCHLlAf/AZjbyCg2VdDbPN5UN+xJGu7MAuOGw=
+  api: https://api.run.pivotal.io
+  organization: research-org
+  space: development

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="banking.users.domain.entity">
+	<class name="User" table="user">
+        <id name="id" column="user_id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="user_name"/>
+        <property name="password" column="password"/>
+        
+        <set name="claims" inverse="true" cascade="all" lazy="false">
+            <key column="user_id" not-null="true"/>
+            <one-to-many class="banking.users.domain.entity.UserClaim"/>
+        </set>
+    </class> 
+</hibernate-mapping>
