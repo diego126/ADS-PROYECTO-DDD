@@ -46,7 +46,7 @@ public class UsersController {
 			if (userAuthDto.isAuthenticated()) {
 				return new ResponseEntity<Object>(userAuthDto, HttpStatus.OK);
 			}
-			return this.responseHandler.getResponse("Invalid User Name / Password", HttpStatus.NOT_FOUND);
+			return this.responseHandler.getResponse("Usuario y/o contraseña incorrecta.", HttpStatus.NOT_FOUND);
 		} catch(IllegalArgumentException ex) {
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 		} catch(Exception ex) {
