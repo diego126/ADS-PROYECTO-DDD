@@ -46,7 +46,7 @@ public class UsersController {
 			if (userAuthDto.isAuthenticated()) {
 				return new ResponseEntity<Object>(userAuthDto, HttpStatus.OK);
 			}
-			return this.responseHandler.getResponse("Mensaje de ejemplo 1. Por favor verifiquwe.", HttpStatus.NOT_FOUND);
+			return this.responseHandler.getResponse("Credenciales incorrectos. Por favor verifiquwe.", HttpStatus.NOT_FOUND);
 		} catch(IllegalArgumentException ex) {
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 		} catch(Exception ex) {
